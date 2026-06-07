@@ -3,6 +3,7 @@ import { Button } from './Button';
 import { Input } from './Input';
 import { Textarea } from './Textarea';
 import { Form, FormControl, FormItem, FormLabel, FormMessage, useForm } from './Form';
+import { PrivacyPolicyDialog } from './PrivacyPolicyDialog';
 import { z } from 'zod';
 import styles from './ContactSection.module.css';
 
@@ -46,6 +47,15 @@ export const ContactSection = () => {
         <h2 className={styles.title}>Bize Ulaşın</h2>
         <p className={styles.description}>
           Sorularınız, önerileriniz veya iş birliği talepleriniz için formu doldurun.
+        </p>
+        <p className={styles.privacyNote}>
+          Formu göndererek{' '}
+          <PrivacyPolicyDialog
+            trigger={
+              <button type="button" className={styles.privacyLink}>Gizlilik Politikası</button>
+            }
+          />
+          {`'nı kabul etmiş olursunuz.`}
         </p>
         <div className={styles.formWrapper}>
           <Form {...form}>

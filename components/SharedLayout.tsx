@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import { PrivacyPolicyDialog } from './PrivacyPolicyDialog';
 import styles from './SharedLayout.module.css';
 
 export const SharedLayout = ({ children }: { children: React.ReactNode }) => {
@@ -9,6 +10,7 @@ export const SharedLayout = ({ children }: { children: React.ReactNode }) => {
       <Header />
       <main className={styles.main}>{children}</main>
       <Footer />
+      <PrivacyPolicyDialog />
     </div>
   );
 };

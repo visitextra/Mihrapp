@@ -4,6 +4,7 @@ import styles from './Header.module.css';
 import { Logo } from './Logo';
 import { Menu, X } from 'lucide-react';
 import { Button } from './Button';
+import { PrivacyPolicyDialog } from './PrivacyPolicyDialog';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -45,6 +46,13 @@ export const Header = () => {
               {link.label}
             </Link>
           ))}
+          <PrivacyPolicyDialog
+            trigger={
+              <button type="button" className={styles.navLink} onClick={closeMenu}>
+                Gizlilik Politikası
+              </button>
+            }
+          />
         </nav>
         <Button
           variant="ghost"

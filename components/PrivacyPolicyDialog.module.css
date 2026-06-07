@@ -1,0 +1,76 @@
+.dialogContent {
+  background-color: #0a0a0a;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #e5e5e5;
+  max-width: 640px;
+  width: 90vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #d4af37;
+}
+
+.lastUpdated {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  margin-top: 4px;
+}
+
+.body {
+  overflow-y: auto;
+  padding-right: 8px;
+  flex: 1;
+}
+
+.body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.body::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 2px;
+}
+
+.section {
+  margin-bottom: 1.25rem;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #d4af37;
+  margin-bottom: 0.4rem;
+}
+
+.section p,
+.section ul {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #c0c0c0;
+}
+
+.section ul {
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.contactLink {
+  color: #d4af37;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contactLink:hover {
+  opacity: 0.8;
+}
