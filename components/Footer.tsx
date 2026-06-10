@@ -167,7 +167,7 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/#contact" className={styles.columnLink}>
+                <Link to="/support-faq" className={styles.columnLink}>
                   Destek & SSS
                 </Link>
               </li>
