@@ -7,8 +7,8 @@
 
 .door {
   position: relative;
-  width: 255px;
-  height: 360px;
+  width: 400px;
+  height: 400px;
   cursor: pointer;
   transition: transform var(--animation-duration-normal) ease;
 }
@@ -20,6 +20,7 @@
 .doorSvg {
   width: 100%;
   height: 100%;
+  overflow: visible;
   filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
   transition: filter var(--animation-duration-normal) ease;
 }
@@ -29,18 +30,19 @@
 }
 
 .doorOutline {
-  stroke: #d4af37;
+  stroke: url(#logoGoldGradient);
+  fill: url(#logoGoldGradient);
   transition: all var(--animation-duration-normal) ease;
 }
 
 .door:hover .doorOutline {
-  stroke: #d4af37;
+  stroke: url(#logoGoldGradient);
   filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8));
 }
 
 @media (max-width: 768px) {
   .door {
-    width: 187px;
-    height: 264px;
+    width: 280px;
+    height: 280px;
   }
 }
