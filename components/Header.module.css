@@ -1,8 +1,5 @@
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: var(--z-nav-sticky);
   padding: var(--spacing-4) 0;
   transition:
@@ -43,21 +40,22 @@
 
 .nav {
   display: flex;
+  align-items: center;
   gap: var(--spacing-8);
 }
 
 .navLink {
   font-family: var(--font-family-base);
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #ffffff;
   text-decoration: none;
   position: relative;
   transition: color var(--animation-duration-fast) ease;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0;
+  border: 1px solid transparent;
 }
 
 .navLink::after {
@@ -65,7 +63,7 @@
   position: absolute;
   width: 0;
   height: 2px;
-  bottom: -4px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   background-color: #d4af37;
@@ -115,5 +113,46 @@
   .menuButton {
     display: flex;
     z-index: var(--z-nav-sticky); /* Ensure it's above the nav panel */
+  }
+
+  .navLink {
+    font-size: 1.1rem;
+    padding: var(--spacing-2) 0;
+    border: none;
+  }
+}
+
+.quranNavLinkBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #d4af37;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--animation-duration-fast) ease;
+  align-self: center;
+  margin-left: var(--spacing-2);
+}
+
+.quranNavLinkBtn:hover {
+  background: #d4af37;
+  color: #000000;
+  border-color: #d4af37;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
+}
+
+@media (max-width: 768px) {
+  .quranNavLinkBtn {
+    margin-left: 0;
+    margin-top: var(--spacing-4);
+    width: 80%;
+    justify-content: center;
+    padding: 0.65rem 1rem;
+    font-size: 1rem;
   }
 }

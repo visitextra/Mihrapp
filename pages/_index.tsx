@@ -4,6 +4,7 @@ import styles from './_index.module.css';
 import { HeroSection } from '../components/HeroSection';
 import { AboutSection } from '../components/AboutSection';
 import { FeaturesSection } from '../components/FeaturesSection';
+import { AnalyticsSection } from '../components/AnalyticsSection';
 import { PartnershipSection } from '../components/PartnershipSection';
 import { ContactSection } from '../components/ContactSection';
 
@@ -27,6 +28,7 @@ const IndexPage = () => {
         <HeroSection />
         <AboutSection />
         <FeaturesSection />
+        <AnalyticsSection />
         <PartnershipSection />
         <ContactSection />
       </div>

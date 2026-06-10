@@ -7,6 +7,8 @@ import Page_1 from "./pages/privacy-policy.tsx";
 import PageLayout_1 from "./pages/privacy-policy.pageLayout.tsx";
 import Page_2 from "./pages/terms-of-service.tsx";
 import PageLayout_2 from "./pages/terms-of-service.pageLayout.tsx";
+import Page_3 from "./pages/kuran.tsx";
+import PageLayout_3 from "./pages/kuran.pageLayout.tsx";
 
 if (!window.requestIdleCallback) {
   window.requestIdleCallback = (cb) => {
@@ -16,12 +18,18 @@ if (!window.requestIdleCallback) {
 
 import "./base.css";
 
-const fileNameToRoute = new Map([["./pages/_index.tsx","/"],["./pages/privacy-policy.tsx","/privacy-policy"],["./pages/terms-of-service.tsx","/terms-of-service"]]);
+const fileNameToRoute = new Map([
+  ["./pages/_index.tsx", "/"],
+  ["./pages/privacy-policy.tsx", "/privacy-policy"],
+  ["./pages/terms-of-service.tsx", "/terms-of-service"],
+  ["./pages/kuran.tsx", "/kuran"]
+]);
 const fileNameToComponent = new Map([
-    ["./pages/_index.tsx", Page_0],
-["./pages/privacy-policy.tsx", Page_1],
-["./pages/terms-of-service.tsx", Page_2],
-  ]);
+  ["./pages/_index.tsx", Page_0],
+  ["./pages/privacy-policy.tsx", Page_1],
+  ["./pages/terms-of-service.tsx", Page_2],
+  ["./pages/kuran.tsx", Page_3]
+]);
 
 function makePageRoute(filename: string) {
   const Component = fileNameToComponent.get(filename);
@@ -104,6 +112,7 @@ export function App() {
 "./pages/_index.tsx": PageLayout_0,
 "./pages/privacy-policy.tsx": PageLayout_1,
 "./pages/terms-of-service.tsx": PageLayout_2,
+"./pages/kuran.tsx": PageLayout_3,
 }), fileNameToRoute, makePageRoute })} 
           <Route path="*" element={<NotFound />} />
         </Routes>

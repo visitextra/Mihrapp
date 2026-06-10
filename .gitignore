@@ -34,3 +34,7 @@ pnpm-debug.log*
 
 # OS
 Thumbs.db
+
+# Config and local data
+env.json
+submissions.json

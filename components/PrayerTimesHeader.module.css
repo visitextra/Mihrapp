@@ -1,0 +1,430 @@
+.topbar {
+  width: 100%;
+  background-color: #050505;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  padding: 0.65rem 0;
+  font-size: 0.85rem;
+  color: var(--foreground);
+  position: relative;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.topbarLoading {
+  width: 100%;
+  height: 2.5rem;
+  background-color: #050505;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: var(--spacing-3);
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.locationBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.6rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--animation-duration-fast) ease;
+}
+
+.locationBadge:hover {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+}
+
+.dateBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.6rem;
+  color: var(--muted-foreground);
+}
+
+.goldText {
+  color: #d4af37;
+}
+
+.mutedText {
+  color: var(--muted-foreground);
+}
+
+/* Prayer Times Row */
+.timesContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.vakitItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: all var(--animation-duration-normal) ease;
+  min-width: 4.5rem;
+}
+
+.vakitName {
+  font-size: 0.72rem;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.vakitTime {
+  font-weight: 700;
+  font-family: var(--font-family-monospace);
+  font-size: 0.85rem;
+}
+
+.activeVakit {
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.15);
+}
+
+.activeVakit .vakitName {
+  color: #d4af37;
+  font-weight: 700;
+}
+
+.activeVakit .vakitTime {
+  color: #ffffff;
+}
+
+/* Countdown */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: rgba(212, 175, 55, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.75rem;
+}
+
+.countdownBox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.countdownLabel {
+  color: var(--muted-foreground);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.countdownTime {
+  font-family: var(--font-family-monospace);
+  font-weight: 700;
+  color: #d4af37;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+/* Spin animation */
+.spinIcon {
+  animation: spin 1.5s linear infinite;
+  color: #d4af37;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Modal Styling */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4);
+}
+
+.modalCard {
+  background: linear-gradient(135deg, #121212 0%, #080808 100%);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.05);
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+  animation: modalScaleIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.modalHeader h3 {
+  font-family: var(--font-family-heading);
+  font-size: 1.15rem;
+  color: #ffffff;
+}
+
+.closeBtn {
+  color: var(--muted-foreground);
+  transition: color var(--animation-duration-fast) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn:hover {
+  color: #ffffff;
+}
+
+.modalBody {
+  padding: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  position: relative;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.formGroup label {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.formGroup select {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: var(--radius);
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+  transition: all var(--animation-duration-fast) ease;
+}
+
+.formGroup select:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+}
+
+.formGroup select option {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.modalLoader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(8, 8, 8, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  color: #ffffff;
+  font-weight: 500;
+  backdrop-filter: blur(2px);
+}
+
+.modalFooter {
+  padding: var(--spacing-4) var(--spacing-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.gpsBtn {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: var(--radius);
+  padding: 0.55rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--animation-duration-fast) ease;
+}
+
+.gpsBtn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #d4af37;
+  color: #d4af37;
+}
+
+.saveBtn {
+  background-color: #d4af37;
+  border: 1px solid #d4af37;
+  color: #000000;
+  border-radius: var(--radius);
+  padding: 0.55rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--animation-duration-fast) ease;
+}
+
+.saveBtn:hover:not(:disabled) {
+  background-color: #e5c158;
+  border-color: #e5c158;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.35);
+}
+
+.saveBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background-color: rgba(212, 175, 55, 0.2);
+  border-color: transparent;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .dateBadge {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 0.4rem 0;
+  }
+  
+  .container {
+    padding: 0 var(--spacing-3);
+    gap: var(--spacing-2);
+  }
+  
+  .leftSection {
+    flex-shrink: 0;
+    width: auto;
+  }
+  
+  .locationBadge {
+    width: auto;
+    padding: 0.25rem 0.45rem;
+    font-size: 0.78rem;
+  }
+  
+  .districtName {
+    display: none;
+  }
+  
+  .dateBadge {
+    display: none;
+  }
+  
+  .timesContainer {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+    width: auto;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 0.25rem;
+    padding-bottom: 2px;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .timesContainer::-webkit-scrollbar {
+    height: 3px;
+  }
+  
+  .timesContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(212, 175, 55, 0.2);
+    border-radius: var(--radius-full);
+  }
+  
+  .vakitItem {
+    min-width: 3.2rem;
+    padding: 0.15rem 0.35rem;
+  }
+  
+  .vakitName {
+    font-size: 0.65rem;
+  }
+  
+  .vakitTime {
+    font-size: 0.75rem;
+  }
+  
+  .rightSection {
+    flex-shrink: 0;
+    width: auto;
+    padding: 0.25rem 0.45rem;
+  }
+  
+  .countdownLabel {
+    display: none;
+  }
+  
+  .countdownTime {
+    font-size: 0.75rem;
+  }
+}

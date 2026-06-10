@@ -3,7 +3,6 @@ import { Button } from './Button';
 import { Input } from './Input';
 import { Textarea } from './Textarea';
 import { Form, FormControl, FormItem, FormLabel, FormMessage, useForm } from './Form';
-import { PrivacyPolicyDialog } from './PrivacyPolicyDialog';
 import { z } from 'zod';
 import styles from './ContactSection.module.css';
 
@@ -27,18 +26,34 @@ export const ContactSection = () => {
     schema: contactFormSchema,
   });
 
-  const onSubmit = (values: z.infer<typeof contactFormSchema>) => {
-    console.log('Form submitted:', values);
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      form.setValues({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
+  const onSubmit = async (values: z.infer<typeof contactFormSchema>) => {
+    try {
+      const response = await fetch('/_api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
       });
-    }, 3000);
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(errorData.error || 'Mesaj gönderilirken bir hata oluştu.');
+        return;
+      }
+
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        form.setValues({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+      }, 3000);
+    } catch (error) {
+      console.error('Contact submission error:', error);
+      alert('Sunucuyla bağlantı kurulamadı. Lütfen daha sonra tekrar deneyiniz.');
+    }
   };
 
   return (
@@ -47,15 +62,6 @@ export const ContactSection = () => {
         <h2 className={styles.title}>Bize Ulaşın</h2>
         <p className={styles.description}>
           Sorularınız, önerileriniz veya iş birliği talepleriniz için formu doldurun.
-        </p>
-        <p className={styles.privacyNote}>
-          Formu göndererek{' '}
-          <PrivacyPolicyDialog
-            trigger={
-              <button type="button" className={styles.privacyLink}>Gizlilik Politikası</button>
-            }
-          />
-          {`'nı kabul etmiş olursunuz.`}
         </p>
         <div className={styles.formWrapper}>
           <Form {...form}>

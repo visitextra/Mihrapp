@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Instagram, Linkedin, Youtube, Facebook } from 'lucide-react';
 import { Logo } from './Logo';
@@ -33,6 +33,39 @@ const XIcon = () => (
 );
 
 export const Footer = () => {
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail || !newsletterEmail.includes('@')) {
+      alert('Lütfen geçerli bir e-posta adresi giriniz.');
+      return;
+    }
+
+    try {
+      const response = await fetch('/_api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: newsletterEmail }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(errorData.error || 'Abone olunurken bir hata oluştu.');
+        return;
+      }
+
+      setIsSubscribed(true);
+      setNewsletterEmail('');
+      setTimeout(() => {
+        setIsSubscribed(false);
+      }, 3000);
+    } catch (error) {
+      console.error('Newsletter subscription error:', error);
+      alert('Sunucuyla bağlantı kurulamadı. Lütfen daha sonra tekrar deneyiniz.');
+    }
+  };
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -90,20 +123,23 @@ export const Footer = () => {
           </div>
           <div className={styles.newsletter}>
             <h3 className={styles.footerHeading}>Gelişmelerden haberdar olun</h3>
-            <form className={styles.signupForm}>
+            <form onSubmit={handleNewsletterSubmit} className={styles.signupForm}>
               <Input
                 type="email"
                 placeholder="E-posta adresiniz"
                 className={styles.emailInput}
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                required
               />
-              <Button type="submit" className={styles.signupButton}>
-                Abone Ol
+              <Button type="submit" className={styles.signupButton} disabled={isSubscribed}>
+                {isSubscribed ? 'Abone Olundu ✓' : 'Abone Ol'}
               </Button>
             </form>
           </div>
         </div>
         <div className={styles.bottomSection}>
-          <p className={styles.copyright}>© 2025 Mihrapp. Tüm hakları saklıdır.</p>
+          <p className={styles.copyright}>© {new Date().getFullYear()} Mihrapp. Tüm hakları saklıdır. QataSoft</p>
           <div className={styles.footerLinks}>
             <Link to="/privacy-policy" className={styles.footerLink}>Gizlilik Politikası</Link>
             <Link to="/terms-of-service" className={styles.footerLink}>Kullanım Şartları</Link>

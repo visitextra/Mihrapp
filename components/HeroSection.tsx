@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from './Button';
 import { Badge } from './Badge';
+import { MobileAppMockup } from './MobileAppMockup';
 import styles from './HeroSection.module.css';
 
 // Simple inline SVG components for store icons
@@ -67,19 +68,25 @@ export const HeroSection = () => {
         </div>
         <div className={styles.mockupsContainer}>
           <div className={styles.mockup}>
-            <div className={styles.phone}>
-              <div className={styles.phoneScreen}></div>
-            </div>
+            <MobileAppMockup
+              imageSrc="/screenshots/kuran-i-kerim.jpeg"
+              altText="Mihrapp Kur'an-ı Kerim Ekranı"
+              glowColor="rgba(212, 175, 55, 0.15)"
+            />
           </div>
           <div className={`${styles.mockup} ${styles.mockupCenter}`}>
-            <div className={styles.phone}>
-              <div className={styles.phoneScreen}></div>
-            </div>
+            <MobileAppMockup
+              imageSrc="/screenshots/anasayfa.jpeg"
+              altText="Mihrapp Anasayfa Ekranı"
+              glowColor="rgba(212, 175, 55, 0.4)"
+            />
           </div>
           <div className={styles.mockup}>
-            <div className={styles.phone}>
-              <div className={styles.phoneScreen}></div>
-            </div>
+            <MobileAppMockup
+              imageSrc="/screenshots/namaz-vakitleri.jpeg"
+              altText="Mihrapp Namaz Vakitleri Ekranı"
+              glowColor="rgba(212, 175, 55, 0.15)"
+            />
           </div>
         </div>
       </div>

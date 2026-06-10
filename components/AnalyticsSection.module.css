@@ -1,0 +1,322 @@
+.analytics {
+  padding: var(--spacing-16) 0;
+  background-color: #0b0b0b;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-8);
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-16);
+  align-items: center;
+}
+
+/* Mockup Showcase with 3D Tilt */
+.mockupShowcase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-6);
+  perspective: 1200px;
+}
+
+.mockupLeft, .mockupRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.mockupLeft {
+  transform: rotateY(18deg) rotateX(4deg) translateZ(10px);
+}
+
+.mockupRight {
+  transform: rotateY(-18deg) rotateX(4deg) translateZ(10px);
+  margin-top: 2rem; /* Asymmetric offset for premium layout */
+}
+
+.mockupLeft:hover {
+  transform: rotateY(8deg) rotateX(2deg) translateY(-8px) translateZ(25px);
+}
+
+.mockupRight:hover {
+  transform: rotateY(-8deg) rotateX(2deg) translateY(-8px) translateZ(25px);
+}
+
+.mockupLabel {
+  font-size: 0.78rem;
+  color: var(--muted-foreground);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Text & Stats Details (Right Column) */
+.textDetails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #d4af37;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.description {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  margin-top: 0.5rem;
+}
+
+/* Widgets Grid */
+.widgetsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+}
+
+.statWidget {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  transition: all var(--animation-duration-normal) ease;
+}
+
+.statWidget:hover {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(212, 175, 55, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.widgetHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.iconBg {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.goldBg {
+  background-color: rgba(212, 175, 55, 0.1);
+  color: #d4af37;
+}
+
+.greenBg {
+  background-color: rgba(50, 160, 90, 0.1);
+  color: #32a05a;
+}
+
+.blueBg {
+  background-color: rgba(50, 110, 180, 0.1);
+  color: #326eb4;
+}
+
+.purpleBg {
+  background-color: rgba(140, 70, 180, 0.1);
+  color: #8c46b4;
+}
+
+.widgetTitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.widgetSub {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin-top: 1px;
+}
+
+/* Progress bar inside widget */
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--muted-foreground);
+}
+
+.progressPercent {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.progressBarBg {
+  width: 100%;
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: #d4af37;
+  border-radius: var(--radius-full);
+}
+
+.greenBar {
+  background-color: #32a05a;
+}
+
+/* Weekday Streaks */
+.daysStreak {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 4px;
+}
+
+.dayCircle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--muted-foreground);
+}
+
+.dayActive {
+  background-color: rgba(50, 110, 180, 0.15);
+  border-color: #326eb4;
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(50, 110, 180, 0.5);
+}
+
+/* Score values */
+.scoreText {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--font-family-monospace);
+}
+
+.scoreText strong {
+  font-size: 1.85rem;
+  color: #8c46b4;
+  text-shadow: 0 0 10px rgba(140, 70, 180, 0.3);
+}
+
+.scoreText span {
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+  margin-left: 4px;
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-12);
+  }
+
+  .mockupShowcase {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 768px) {
+  .analytics {
+    padding: var(--spacing-12) 0;
+  }
+
+  .container {
+    padding: 0 var(--spacing-4);
+  }
+
+  .mockupShowcase {
+    transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    height: 340px; /* Fixed height for absolute layered layout */
+    position: relative;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .mockupLeft, .mockupRight {
+    position: absolute;
+    width: 200px;
+  }
+
+  .mockupLeft {
+    transform: translateX(-40px) scale(0.75) rotateY(15deg);
+    z-index: 2;
+  }
+
+  .mockupRight {
+    transform: translateX(40px) translateY(20px) scale(0.75) rotateY(-15deg);
+    z-index: 1;
+    margin-top: 0;
+  }
+
+  .mockupLeft:hover {
+    transform: translateX(-40px) scale(0.75) rotateY(15deg);
+  }
+
+  .mockupRight:hover {
+    transform: translateX(40px) translateY(20px) scale(0.75) rotateY(-15deg);
+  }
+
+  .widgetsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-3);
+  }
+}

@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import { Logo } from './Logo';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, BookOpen } from 'lucide-react';
 import { Button } from './Button';
-import { PrivacyPolicyDialog } from './PrivacyPolicyDialog';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,7 +19,7 @@ export const Header = () => {
 
   const navLinks = [
     { href: '#about', label: 'Hikayemiz' },
-    { href: '#features', label: 'Neler Sunuyoruz' },
+    { href: '#features', label: 'Uygulama Özellikleri' },
     { href: '#partnership', label: 'İş Ortaklığı' },
     { href: '#contact', label: 'İletişim' },
   ];
@@ -46,13 +45,14 @@ export const Header = () => {
               {link.label}
             </Link>
           ))}
-          <PrivacyPolicyDialog
-            trigger={
-              <button type="button" className={styles.navLink} onClick={closeMenu}>
-                Gizlilik Politikası
-              </button>
-            }
-          />
+          <Link
+            to="/kuran"
+            className={styles.quranNavLinkBtn}
+            onClick={closeMenu}
+          >
+            <BookOpen size={16} />
+            <span>Kur'an-ı Kerim</span>
+          </Link>
         </nav>
         <Button
           variant="ghost"

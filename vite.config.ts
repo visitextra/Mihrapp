@@ -16,6 +16,14 @@ export default defineConfig(({ isSsrBuild }) => ({
     }),
     react(),
   ],
+  server: {
+    proxy: {
+      '/_api': {
+        target: 'http://localhost:3344',
+        changeOrigin: true,
+      }
+    }
+  },
   build: {
     assetsDir: "_assets",
   },

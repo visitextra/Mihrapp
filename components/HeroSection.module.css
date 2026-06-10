@@ -140,62 +140,40 @@
 }
 
 .mockup {
-  animation: float 3s ease-in-out infinite;
+  animation: floatLeftRight 3.5s ease-in-out infinite;
+  transition: transform 0.5s ease;
+}
+
+.mockup:nth-child(1) {
+  transform: rotateY(12deg) rotateX(2deg);
 }
 
 .mockup:nth-child(2) {
-  animation-delay: 0.3s;
+  animation: floatCenter 3.5s ease-in-out infinite;
+  animation-delay: 0.4s;
+  z-index: 10;
 }
 
 .mockup:nth-child(3) {
-  animation-delay: 0.6s;
+  animation-delay: 0.8s;
+  transform: rotateY(-12deg) rotateX(2deg);
 }
 
-.mockupCenter {
-  transform: translateY(-1rem);
-}
-
-.phone {
-  width: 11rem;
-  height: 22rem;
-  background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.95));
-  border-radius: 2rem;
-  padding: 0.75rem;
-  box-shadow: 
-    0 10px 40px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(212, 175, 55, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.phone::before {
-  content: '';
-  position: absolute;
-  top: 0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6rem;
-  height: 1.5rem;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 0 0 1rem 1rem;
-  z-index: 2;
-}
-
-.phoneScreen {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
-  border-radius: 1.5rem;
-  position: relative;
-  overflow: hidden;
-}
-
-@keyframes float {
+@keyframes floatLeftRight {
   0%, 100% {
-    transform: translateY(0);
+    transform: translateY(0) rotateY(10deg);
   }
   50% {
-    transform: translateY(-1rem);
+    transform: translateY(-0.8rem) rotateY(10deg);
+  }
+}
+
+@keyframes floatCenter {
+  0%, 100% {
+    transform: translateY(-2.2rem) scale(1.06) rotateX(4deg);
+  }
+  50% {
+    transform: translateY(-3.0rem) scale(1.06) rotateX(4deg);
   }
 }
 
@@ -224,12 +202,13 @@
 @media (max-width: 768px) {
   .hero {
     padding: var(--spacing-12) var(--spacing-3);
-    padding-top: var(--spacing-16);
-    min-height: 100svh;
+    padding-top: calc(100px + var(--spacing-8)); /* Safely below fixed 100px header wrapper */
+    min-height: auto;
+    height: auto;
   }
 
   .content {
-    margin-top: var(--spacing-8);
+    margin-top: var(--spacing-4);
     padding: 0 var(--spacing-3);
   }
 
@@ -248,15 +227,23 @@
   }
 
   .mockupsContainer {
-    gap: var(--spacing-3);
-    transform: scale(0.8);
-    max-width: 100%;
-    overflow: hidden;
+    width: 100%;
+    max-width: 240px; /* Width of the single mobile mockup */
+    margin: var(--spacing-6) auto 0 auto;
+    transform: none;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
   }
 
-  .phone {
-    width: 8rem;
-    height: 16rem;
+  .mockup:nth-child(1),
+  .mockup:nth-child(3) {
+    display: none;
+  }
+
+  .mockup:nth-child(2) {
+    transform: none;
+    animation: floatCenterMobile 3s ease-in-out infinite;
   }
 
   .ctaContainer {
@@ -279,5 +266,14 @@
   .ctaSecondary {
     width: 100%;
     font-size: 0.875rem;
+  }
+}
+
+@keyframes floatCenterMobile {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.6rem);
   }
 }

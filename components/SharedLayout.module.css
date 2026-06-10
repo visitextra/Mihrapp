@@ -10,3 +10,23 @@
 .main {
   flex-grow: 1;
 }
+
+.headerWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.withPadding {
+  padding-top: 106px;
+}
+
+@media (max-width: 768px) {
+  .withPadding {
+    padding-top: 100px;
+  }
+}
