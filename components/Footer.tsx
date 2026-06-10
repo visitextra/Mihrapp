@@ -121,6 +121,59 @@ export const Footer = () => {
               </a>
             </div>
           </div>
+
+          <div className={styles.linksColumn}>
+            <h3 className={styles.columnHeading}>Hızlı Linkler</h3>
+            <ul className={styles.linksList}>
+              <li>
+                <Link to="/#about" className={styles.columnLink}>
+                  Hikayemiz
+                </Link>
+              </li>
+              <li>
+                <Link to="/#features" className={styles.columnLink}>
+                  Uygulama Özellikleri
+                </Link>
+              </li>
+              <li>
+                <Link to="/#partnership" className={styles.columnLink}>
+                  İş Ortaklığı
+                </Link>
+              </li>
+              <li>
+                <Link to="/#contact" className={styles.columnLink}>
+                  İletişim
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className={styles.linksColumn}>
+            <h3 className={styles.columnHeading}>Yardım & Yasal</h3>
+            <ul className={styles.linksList}>
+              <li>
+                <Link to="/kuran" className={styles.columnLink}>
+                  Kur'an-ı Kerim
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy-policy" className={styles.columnLink}>
+                  Gizlilik Politikası
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms-of-service" className={styles.columnLink}>
+                  Kullanım Şartları
+                </Link>
+              </li>
+              <li>
+                <Link to="/#contact" className={styles.columnLink}>
+                  Destek & SSS
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           <div className={styles.newsletter}>
             <h3 className={styles.footerHeading}>Gelişmelerden haberdar olun</h3>
             <form onSubmit={handleNewsletterSubmit} className={styles.signupForm}>
@@ -140,10 +193,6 @@ export const Footer = () => {
         </div>
         <div className={styles.bottomSection}>
           <p className={styles.copyright}>© {new Date().getFullYear()} Mihrapp. Tüm hakları saklıdır. QataSoft</p>
-          <div className={styles.footerLinks}>
-            <Link to="/privacy-policy" className={styles.footerLink}>Gizlilik Politikası</Link>
-            <Link to="/terms-of-service" className={styles.footerLink}>Kullanım Şartları</Link>
-          </div>
         </div>
       </div>
     </footer>

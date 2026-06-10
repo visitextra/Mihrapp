@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Header.module.css';
 import { Logo } from './Logo';
 import { Menu, X, BookOpen } from 'lucide-react';
@@ -8,6 +8,7 @@ import { Button } from './Button';
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +32,17 @@ export const Header = () => {
       className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}
     >
       <div className={styles.container}>
-        <Link to="/#hero" className={styles.logoLink} onClick={closeMenu}>
+        <Link
+          to="/"
+          className={styles.logoLink}
+          onClick={(e) => {
+            closeMenu();
+            if (location.pathname === '/') {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+        >
           <Logo />
         </Link>
         <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>

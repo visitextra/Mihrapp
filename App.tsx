@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route, Outlet, useLocation } from "react-router-dom";
 import { GlobalContextProviders } from "./components/_globalContextProviders";
 import Page_0 from "./pages/_index.tsx";
 import PageLayout_0 from "./pages/_index.pageLayout.tsx";
@@ -103,9 +103,20 @@ function NotFound() {
   );
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 export function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <GlobalContextProviders>
         <Routes>
           {toElement({ trie: buildLayoutTrie({
