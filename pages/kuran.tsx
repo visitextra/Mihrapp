@@ -63,10 +63,20 @@ export const KuranPage = () => {
   useEffect(() => {
     const fetchSurahs = async () => {
       try {
-        const res = await fetch('https://quranapi.pages.dev/api/surah.json');
+        const res = await fetch('https://api.alquran.cloud/v1/surah');
         if (!res.ok) throw new Error('Surah listesi yüklenemedi');
         const data = await res.json();
-        setSurahs(data);
+        
+        const mappedSurahs: SurahListItem[] = data.data.map((item: any) => ({
+          surahName: item.englishName,
+          surahNameArabic: item.name,
+          surahNameArabicLong: item.name,
+          surahNameTranslation: item.englishNameTranslation,
+          revelationPlace: item.revelationType === 'Meccan' ? 'Mekke' : 'Medine',
+          totalAyah: item.numberOfAyahs,
+        }));
+        
+        setSurahs(mappedSurahs);
       } catch (err) {
         console.error(err);
         setError('Kur\'an listesi alınamadı. Lütfen daha sonra tekrar deneyin.');
@@ -98,25 +108,39 @@ export const KuranPage = () => {
       }
 
       try {
-        const [detailRes, trRes] = await Promise.all([
-          fetch(`https://quranapi.pages.dev/api/${selectedSurahNo}.json`),
-          fetch(`https://api.alquran.cloud/v1/surah/${selectedSurahNo}/tr.diyanet`)
-        ]);
+        const res = await fetch(`https://api.alquran.cloud/v1/surah/${selectedSurahNo}/editions/quran-uthmani,tr.diyanet`);
+        if (!res.ok) throw new Error('Sure detayları yüklenemedi');
 
-        if (!detailRes.ok || !trRes.ok) {
-          throw new Error('Sure detayları yüklenemedi');
-        }
+        const data = await res.json();
+        if (!data.data || data.data.length < 2) throw new Error('Geçersiz sure verisi');
 
-        const detailData = await detailRes.json();
-        const trData = await trRes.json();
+        const arabicEdition = data.data.find((e: any) => e.edition.identifier === 'quran-uthmani') || data.data[0];
+        const turkishEdition = data.data.find((e: any) => e.edition.identifier === 'tr.diyanet') || data.data[1];
+
+        const detailData: SurahDetail = {
+          surahNo: arabicEdition.number,
+          surahName: arabicEdition.englishName,
+          surahNameArabic: arabicEdition.name,
+          surahNameTranslation: arabicEdition.englishNameTranslation,
+          revelationPlace: arabicEdition.revelationType === 'Meccan' ? 'Mekke' : 'Medine',
+          totalAyah: arabicEdition.numberOfAyahs,
+          arabic1: arabicEdition.ayahs.map((a: any) => a.text),
+          audio: {
+            "1": {
+              reciter: "Mishary Rashid Alafasy",
+              url: `https://download.quranicaudio.com/qdc/mishari_al_afasy/by_surah/surah_${selectedSurahNo}.mp3`
+            }
+          }
+        };
 
         setSurahDetail(detailData);
-        setTurkishVerses(trData.data.ayahs);
+        setTurkishVerses(turkishEdition.ayahs.map((a: any) => ({
+          number: a.number,
+          text: a.text,
+          numberInSurah: a.numberInSurah
+        })));
 
-        // Get Mishary Rashid Alafasy audio (reciter "1") or default first reciter
-        const reciters = detailData.audio || {};
-        const selectedAudioUrl = reciters["1"]?.url || Object.values(reciters)[0]?.url || null;
-        setAudioUrl(selectedAudioUrl);
+        setAudioUrl(`https://download.quranicaudio.com/qdc/mishari_al_afasy/by_surah/surah_${selectedSurahNo}.mp3`);
 
       } catch (err) {
         console.error(err);
