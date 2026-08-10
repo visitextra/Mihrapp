@@ -42,7 +42,7 @@ const FAQPage = () => {
     {
       id: 'item-6',
       question: 'Mihrapp uygulamasını mobil cihazıma nasıl indirebilirim?',
-      answer: 'Mihrapp şu anda web platformunda aktiftir. Mobil uygulamalarımız (App Store ve Google Play) çok yakında indirilmeye sunulacaktır. Gelişmelerden haberdar olmak için bültenimize abone olabilirsiniz.',
+      answer: 'Mihrapp mobil uygulamasını App Store ve Google Play Store üzerinden ücretsiz olarak cihazınıza indirebilirsiniz.',
     },
   ];
 

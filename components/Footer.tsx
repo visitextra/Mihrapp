@@ -4,7 +4,11 @@ import { Instagram, Linkedin, Youtube, Facebook } from 'lucide-react';
 import { Logo } from './Logo';
 import { Input } from './Input';
 import { Button } from './Button';
+import { AppleIcon, GooglePlayIcon } from './StoreIcons';
 import styles from './Footer.module.css';
+
+const APP_STORE_URL = 'https://apps.apple.com/tr/app/mihrapp/id6779521636?l=tr';
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.mihrapapp.app';
 
 // TikTok icon (not available in lucide)
 const TikTokIcon = () => (
@@ -72,7 +76,7 @@ export const Footer = () => {
         <div className={styles.topSection}>
           <div className={styles.brandInfo}>
             <Logo />
-            <p className={styles.tagline}>Dijital çağda ruhunuzu besleyin.</p>
+            <p className={styles.tagline}>Manevi yolculuğa açılan kapınız.</p>
             <div className={styles.socials}>
               <a
                 href="https://www.youtube.com/@Mihrapp.Social"
@@ -189,6 +193,35 @@ export const Footer = () => {
                 {isSubscribed ? 'Abone Olundu ✓' : 'Abone Ol'}
               </Button>
             </form>
+
+            <div className={styles.footerStoreContainer}>
+              <a
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.whiteStoreButton}
+                aria-label="App Store'dan İndirin"
+              >
+                <AppleIcon size={24} />
+                <div className={styles.whiteStoreText}>
+                  <span className={styles.whiteStoreSub}>App Store'dan</span>
+                  <span className={styles.whiteStoreMain}>İndirin</span>
+                </div>
+              </a>
+              <a
+                href={PLAY_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.whiteStoreButton}
+                aria-label="Google Play'den İndirin"
+              >
+                <GooglePlayIcon size={22} />
+                <div className={styles.whiteStoreText}>
+                  <span className={styles.whiteStoreSub}>Google Play'den</span>
+                  <span className={styles.whiteStoreMain}>İndirin</span>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
         <div className={styles.bottomSection}>

@@ -26,5 +26,13 @@ export default defineConfig(({ isSsrBuild }) => ({
   },
   build: {
     assetsDir: "_assets",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom", "react-router-dom"],
+          lucide: ["lucide-react"],
+        },
+      },
+    },
   },
 }));

@@ -144,6 +144,68 @@
   color: #d4af37;
 }
 
+.footerStoreContainer {
+  display: flex;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-8);
+  padding-top: var(--spacing-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+}
+
+.whiteStoreButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #ffffff;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  text-decoration: none;
+  transition: all var(--animation-duration-fast) ease;
+  min-width: 145px;
+}
+
+.whiteStoreButton svg {
+  fill: #ffffff;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.whiteStoreButton:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.25);
+}
+
+.whiteStoreButton:hover svg {
+  fill: #000000;
+  color: #000000;
+}
+
+.whiteStoreText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.whiteStoreSub {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  opacity: 0.85;
+}
+
+.whiteStoreMain {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 var(--spacing-4);
@@ -163,6 +225,10 @@
 
   .linksColumn {
     align-items: center;
+  }
+
+  .footerStoreContainer {
+    justify-content: center;
   }
 
   .bottomSection {
